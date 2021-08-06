@@ -63,6 +63,17 @@ class Blueprint:
         with open(path,'w') as bpfile:
             bpfile.write( json.dumps(self.bp,indent=indent) )
 
+    def get_block_count(self,guid):
+        '''Count the number of times a block type appears in the blueprint'''
+        if(guid not in self.to_id):
+            return 0
+        count = 0
+        for sc in sc_iter(self.bp['Blueprint']):
+            block_ids = array(sc['BlockIds'])
+            check_id = self.to_id[guid]
+            count += len(block_ids[block_ids==check_id])
+        return count
+
     def get_conversion_table(self,m_from,m_to):
         '''Generate a dictionary that maps block GUIDs of one material to the corresponding
         shape in another material, but limited to the shapes that were originally present
@@ -149,6 +160,7 @@ class Blueprint:
                 if( totals[qty] == 0 ):
                     continue
                 categories[cat][qty+'%'] = 100 * categories[cat][qty] / totals[qty]
+        categories['Totals'] = totals
 
         # display results
         if(printstyle=='table'):
