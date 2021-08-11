@@ -174,7 +174,7 @@ class Blueprint:
                  '({:.1f}%)'.format(categories[cat]['weight%']),
                  '{:,.0f}'.format(categories[cat]['count']),
                  '({:.1f}%)'.format(categories[cat]['count%']),
-                ] for cat in categories
+                ] for cat in categories if cat != 'Totals'
                 if len(categories[cat]['breakdown'])>0
             ]
             res.append( ['Total',
