@@ -47,13 +47,64 @@ banned_blocks = {
 }
 
 restricted_blocks = {
+    'Firing Pieces': {
+        'GUIDs': ['7101e1cb-a501-49bd-8bbe-7a960881e72b', #Simple weapons
+                  '0aa0fa2e-1a85-4493-9c4c-0a69c385395d',
+                  'aa070f63-c454-4f95-82fd-d946a32a1b66',
+                  'c94e1719-bcc7-4c6a-8563-505fad2f9db9',
+                  'b92a4ce6-ea93-4c0c-97d7-494ea611caa9',
+                  '1217043c-e786-4555-ba24-46cd1f458bf9',
+                  'f9f36cb3-cbfd-446a-9313-40f8e31e6e89',
+                  '742f063f-d0fe-4f41-8717-a2c75c38d5e0',
+                  '58305289-16ea-43cf-9144-2f23b383da81',
+                  '3be0cab1-643b-4e3a-9f49-45995e4eb9fb',
+                  'd8c5639a-ff5f-448e-a761-c2f69fac661a',
+                  '268d79bf-c266-48ed-b01b-76c8d4d31c92',
+                  '9b8657b9-c820-43a0-ad19-25ea45a100f1',
+                  '2311e4db-a281-448f-ad53-0a6127573a96',
+                  'e1d1bcae-f5e4-42bb-9781-6dde51b8e390',
+                  '16b67fbc-25d5-4a35-a0df-4941e7abf6ef',
+                  'd3e8e14a-58e7-4bdd-b1b3-0f37e4723a73',
+
+                  'dc8f69fe-f97c-404f-996c-1b934afa17b5', #APS and CRAM
+                  'a97e03b0-e8da-49e2-9913-ad8c1826d869',
+
+                  '6fc05823-7905-4b5e-bde0-858010860e91', #Missile launchers
+                  '9bff4b97-c652-4da7-99df-ab4a1bd5551e',
+                  '43d357dd-d896-4f43-a0ff-8c3b091267c4',
+                  '9424812a-274e-4223-a3ae-9ee86a7db46b',
+                  '6a166a7c-dc50-401c-8498-3a7d6b7f09e7',
+                  '77b3c67d-f649-438c-8e24-5779c0f0bdbf',
+                  '54a66bcd-dc50-401c-8498-3a7d6b7f09e7',
+                  'c743b888-a53c-42b8-b4f0-3afc6d763617',
+                  'bfb82ee6-345a-44a4-84e1-d6706cc8b29d',
+                  '8ba7a591-3923-4344-9f87-0588c6a1aba0',
+                  '26b0f142-9419-41f1-9c13-3a2b62437f60',
+                  '1b9aa074-9b04-4b5c-b30e-35bdfa0e0835',
+                  'a7aaf947-f16c-489b-a10e-b48d03e0d209',
+                  'b8bbf947-f16c-489b-a10e-b48d03e0d209',
+
+                  '7dc67bed-fd0f-4145-9525-5840bbcc4822', #Laser combiners
+                  'fd2b6afb-da6f-4a8e-bfc0-e4202b87300d',
+
+                  '3d82f1a3-ad2a-4e81-a4e3-cb88c968f6e9', #PAC lenses
+                  '2eea241a-6a32-41c6-a9e4-d082c7e854de',
+                  '9896747c-39a5-43bc-8ba9-ccf2f645cca1',
+                  'f1746662-adec-4054-98bd-94b553bc6c6d',
+                  '1a1c9de5-6db5-4092-97ac-a4883383fadd',
+                  '2e429412-2982-4335-bf3c-a6c6609c8cbf',
+        ],
+        'max': 50,
+        'message': None
+    },
     'LAMS Nodes': {
         'GUIDs': ['9385face-922e-4158-9632-7ab9fcb00166'],
         'max': 4,
         'message': 'LAMS nodes present, check number of connected laser systems'
     },
     'Offensive Lasers': {
-        'GUIDs': ['7dc67bed-fd0f-4145-9525-5840bbcc4822',],
+        'GUIDs': ['7dc67bed-fd0f-4145-9525-5840bbcc4822',
+                  'fd2b6afb-da6f-4a8e-bfc0-e4202b87300d',],
         'max': -1,
         'message': 'Offensive lasers present, check DPS/AP of connected systems'
     },
@@ -148,7 +199,7 @@ rotation_restrictions = {
         'banned_rotations': ['up'],
     },
     'Vertical Propulsion': {
-        # props, steam props, steam jets, jet engines, cje controller/exhausts, ion thrusters, dediblades
+        # props, steam props, steam jets, jet engines, cje controller/exhausts, ion thrusters
         'GUIDs': ['ceae02f9-2a21-40a0-b0d5-fdb0e4975826',
                   '3d03785a-21b9-42c7-8acb-17cf43de9d58',
                   'd43a0af4-69e3-4f28-a0fc-9d36b21273e2',
@@ -176,10 +227,14 @@ rotation_restrictions = {
                   '0083a83e-a716-4c67-aa49-d14fbcd00248',
                   '02ea8321-aaff-4d03-8c50-20c241a82632',
                   '1d206e3b-4641-4002-9d3d-940036154408',
-                  '2718d6ad-07a2-4d98-bd7e-9cdb2b3f70db',
-                  '564a75cd-8d7c-469b-a4b3-053d772b7d9d',],
+                  '2718d6ad-07a2-4d98-bd7e-9cdb2b3f70db',],
         'max': 0,
         'banned_rotations': ['up','down']
+    },
+    'Vertical Dediblades': {
+        'GUIDs': ['564a75cd-8d7c-469b-a4b3-053d772b7d9d'],
+        'max': 0,
+        'banned_rotations': ['forward','back','left','right']
     },
 }
 
@@ -282,8 +337,8 @@ def check_bp(path):
                     for b_rots in rotation_restrictions[block_type]['banned_rotations']:
                         num = count_nonzero(in1d(rots, rotations[b_rots]))
                         count += num
-                        # if(num>0):
-                            # print('! {} bad rotations for {}'.format(count_nonzero(in1d(rots, rotations[b_rots])),bp.gmap[guid]['name']))
+                        if(num>0):
+                            print('- {} bad rotations for {}'.format(count_nonzero(in1d(rots, rotations[b_rots])),bp.gmap[guid]['name']))
         if(rotation_restrictions[block_type]['max']>=0):
             if(count>rotation_restrictions[block_type]['max']):
                 print('! Limit for {} exceeded! {}/{}'.format(block_type, count, rotation_restrictions[block_type]['max']))
