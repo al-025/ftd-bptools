@@ -63,6 +63,22 @@ class Blueprint:
         with open(path,'w') as bpfile:
             bpfile.write( json.dumps(self.bp,indent=indent) )
 
+    def export_palette(self,path=None,indent=None):
+        '''Write out the colour palette contained within the blueprint to the specified file in
+        json format.'''
+        if(path==None):
+            path = Path(self.bp['Name']+'.palette')
+        with open(path,'w') as palettefile:
+            palettefile.write( json.dumps(self.bp['Blueprint']['COL'],indent=indent) )
+
+    def import_palette(self,path=None):
+        '''Replace this blueprint's colour palette with the colours specified in the given json file.'''
+        with open(path,'r') as palettefile:
+            cols = json.loads(palettefile.read())
+        if( not isinstance(cols,list) ):
+            raise TypeError('Invalid palette file')
+        self.bp['Blueprint']['COL'] = cols
+
     def get_block_count(self,guid):
         '''Count the number of times a block type appears in the blueprint'''
         if(guid not in self.to_id):
