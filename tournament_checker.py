@@ -44,6 +44,12 @@ banned_blocks = {
     'Warp Terminator': 'd6c8b7aa-bdcd-459a-a2ec-fbbba09cffcf',
     'LUA Box': 'd3924bae-be5a-43a0-be19-64fc7c8d6059',
     'LUA Transceiver': 'dc17bd30-20ac-47c3-9c42-af6b3cdebf6e',
+    'Non-solid Clip (1m)': '7836f02d-9d50-476c-8701-d0e4eda43de3',
+    'Non-solid Clip (2m)': '66e3efae-4d73-4f4e-adbd-85e2573580e4',
+    'Non-solid Clip (3m)': '3b67ec16-9ccd-47de-8753-53617df90c61',
+    'Non-solid Clip (4m)': 'c3f26ef6-22f2-4a04-bb49-aa66cc949188',
+    'Non-solid Clip (6m)': '462f80ed-2611-4cf8-a204-c7a66ea241da',
+    'Non-solid Clip (8m)': '2a8501f7-2463-441c-901a-57d1a6573fe6',
 }
 
 restricted_blocks = {
@@ -247,9 +253,9 @@ max_height = 100
 
 def check_bp(path):
     bp = Blueprint(path=path,gmap='guid_map.json')
-    print('Analysing {}'.format(bp.bp['Name']))
+    print('Preliminary inspection report for {}'.format(bp.bp['Name']))
 
-    print('\nChecking build constraints...')
+    print('\nBuild constraints')
     errors = 0
     categories = bp.analyse(printstyle=None)
     if(categories['Totals']['cost']>max_cost):
@@ -274,7 +280,7 @@ def check_bp(path):
     else:
         print('Section OK')
 
-    print('\nChecking subobjects...')
+    print('\nSubobjects')
     errors = 0
     sc_count = 0
     for sc in sc_iter(bp.bp['Blueprint']):
@@ -295,7 +301,7 @@ def check_bp(path):
     else:
         print('Section OK')
 
-    print('\nChecking for banned blocks...')
+    print('\nBanned blocks')
     errors = 0
     for name, guid in banned_blocks.items():
         count = bp.get_block_count(guid)
@@ -307,7 +313,7 @@ def check_bp(path):
     else:
         print('Section OK')
 
-    print('\nChecking for restricted blocks...')
+    print('\nRestricted blocks')
     errors = 0
     for block_type in restricted_blocks:
         count = 0
@@ -323,7 +329,7 @@ def check_bp(path):
     else:
         print('Section OK')
 
-    print('\nChecking block rotations...')
+    print('\nBlock rotation restrictions')
     errors = 0
     for block_type in rotation_restrictions:
         count = 0
