@@ -127,7 +127,7 @@ restricted_blocks = {
     'Shield Projectors': {
         'GUIDs': ['f7042d78-d7ae-4a0b-b273-197813c61648'],
         'max': -1,
-        'message': 'Shield projectors present'
+        'message': 'Shield projectors present, check limit per subobject'
     },
     'Ring Shields': {
         'GUIDs': ['61228ef0-e45f-4074-bd16-9dc47b19be5b'],
@@ -256,6 +256,7 @@ def check_bp(path):
     print('Preliminary inspection report for {}'.format(bp.bp['Name']))
 
     print('\nBuild constraints')
+    total_errors = 0
     errors = 0
     categories = bp.analyse(printstyle=None)
     if(categories['Totals']['cost']>max_cost):
@@ -277,6 +278,7 @@ def check_bp(path):
     print('  Width: {}, Height: {}, Length: {}'.format(width, height, length))
     if(errors>0):
         print('Errors in section: {}'.format(errors))
+        total_errors += errors
     else:
         print('Section OK')
 
@@ -298,6 +300,7 @@ def check_bp(path):
         print('  {}/{} subobjects used'.format(sc_count,subobject_limit))
     if(errors>0):
         print('Errors in section: {}'.format(errors))
+        total_errors += errors
     else:
         print('Section OK')
 
@@ -310,6 +313,7 @@ def check_bp(path):
             errors += 1
     if(errors>0):
         print('Found {} types of banned blocks!'.format(errors))
+        total_errors += errors
     else:
         print('Section OK')
 
@@ -326,6 +330,7 @@ def check_bp(path):
                 errors += 1
     if(errors>0):
         print('Errors in section: {}'.format(errors))
+        total_errors += errors
     else:
         print('Section OK')
 
@@ -354,8 +359,14 @@ def check_bp(path):
                 print('- '+rotation_restrictions[block_type]['message'])
     if(errors>0):
         print('Errors in section: {}'.format(errors))
+        total_errors += errors
     else:
         print('Section OK')
+
+    if(total_errors>0):
+        print('\nResult: FAIL ({} errors)\n'.format(total_errors))
+    else:
+        print('\nResult: PASS\n')
 
 # Execution begins
 if(len(sys.argv)>1):
