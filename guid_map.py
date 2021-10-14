@@ -75,7 +75,7 @@ class GUID_map:
 
     def __getitem__(self,guid):
         if(guid not in self):
-            raise ValueError('GUID not found')
+            raise ValueError('GUID not found: {}'.format(guid))
         return self.gmap[guid]
 
     def __setitem__(self,guid,value):
